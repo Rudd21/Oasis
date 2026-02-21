@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col min-h-screen">
     <AppNavigation />
     <main class="flex-grow">
       <NuxtPage />
@@ -10,7 +10,7 @@
 
 <style>
 html, body {
-  font-family: 'YourFont', sans-serif;
+  font-family: 'Comic sans', sans-serif;
   @apply antialiased text-gray-800;
 }
 </style>
