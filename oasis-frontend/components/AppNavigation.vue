@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { useAuthStore } from '~/stores/auth';
+
+const auth = useAuthStore();
+
+onMounted(()=>{
+    if(!auth.isLoggedIn){
+        auth.fetchUser();
+    }
+})
 
 interface NavigationList {
     nav1: string;
@@ -9,39 +18,23 @@ interface NavigationList {
 
 const navigationMap: Record<string, NavigationList>={
     project:{
-        nav1: 'nav1',
-        nav2: 'nav1',
-        nav3: 'nav1',
-        nav4: 'nav1',
-    },
-    manager:{
-        nav1: 'nav2',
-        nav2: 'nav2',
-        nav3: 'nav2',
-        nav4: 'nav2',
-    },
-    worker:{
-        nav1: 'nav3',
-        nav2: 'nav3',
-        nav3: 'nav3',
-        nav4: 'nav3',
-    },
-    dashboard:{
-        nav1: 'nav4',
-        nav2: 'nav4',
-        nav3: 'nav4',
-        nav4: 'nav4',
-    },
+        nav1: 'Project',
+        nav2: 'Tasks',
+        nav3: 'Statistic',
+        nav4: 'Members',
+    }
 }
 
 const activeNav =  ref('project');
 
 const currentNav = computed(()=> navigationMap[activeNav.value])
 
+
+
 </script>
 
 <template>
-    <nav 
+    <nav
         class="group bg-[#E2E8CE] font-[Open Sans] p-3"
         @mouseleave="activeNav = 'none'"    
     >
@@ -65,8 +58,20 @@ const currentNav = computed(()=> navigationMap[activeNav.value])
                 </div>
             </li>
             <li class="flex gap-3">
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
+                <div v-if="auth.loading">Заватаження...</div>
+                
+                <nav v-else>
+                    <div v-if="auth.isLoggedIn" class="flex gap-3">
+                        <NuxtLink href="/login">Profile</NuxtLink>
+                        <button @click="auth.Logout">Logout</button>
+                    </div>
+
+                    <div v-else class="flex gap-3">
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    </div>
+                </nav>
+
             </li>
         </ul>
         <Transition
@@ -79,9 +84,9 @@ const currentNav = computed(()=> navigationMap[activeNav.value])
             leave-to-class="transform translate-y-2 opacity-0"
             :class="[activeNav === 'none' ? 'hidden' : 'visible']"
         >
-            <div class="flex translate-y-[0px] group-hover:opacity-100 transition-opacity">
+            <div class="absolute translate-y-[0px] group-hover:opacity-100 transition-opacity">
                 <ul :key="currentNav?.nav1" class="flex mx-[100px]">
-                    <li><a class="p-3 border rounded-[15px]" href="">{{currentNav?.nav1}}</a></li>
+                    <li><a class="p-3 border rounded-[15px]" href="/project">{{currentNav?.nav1}}</a></li>
                     <li><a class="p-3 border rounded-[15px]" href="">{{ currentNav?.nav2 }}</a></li>
                     <li><a class="p-3 border rounded-[15px]" href="">{{currentNav?.nav3}}</a></li>
                     <li><a class="p-3 border rounded-[15px]" href="">{{ currentNav?.nav4 }}</a></li>

@@ -37,23 +37,23 @@ async function submitForm(args: RegisterForm){
 </script>
 
 <template>
-    <div class="m-auto bg-[#ACBFA4] m-auto">
-        <h1>Форма реєстрації</h1>
+    <div class="bg-[#ACBFA4] m-auto my-[10%] w-[30%] p-2">
+        <h1 class="text-center font-bold text-[25px]">Форма реєстрації</h1>
         <form class="flex flex-col gap-5" @submit.prevent="submitForm(form)">
-            <label>
-                Email:
+            <label class="flex flex-col m-auto">
+                <p>Email:</p>
                 <input v-model="form.Email" name="Email" class="border" type="email" required>
-            </label>
-            <label>
-                Name:
+            </label class="flex flex-col m-auto">
+            <label class="flex flex-col m-auto">
+                <p>Name:</p>
                 <input v-model="form.Name" class="border" type="text" required>
             </label>
-            <label>
-                Password:
+            <label class="flex flex-col m-auto">
+                <p>Password:</p>
                 <input v-model="form.Password" class="border" type="password" required>
             </label>
-            <label>
-                Repeat password:
+            <label class="flex flex-col m-auto">
+                <p>Repeat password:</p>
                 <input v-model="form.PasswordConfirmation" class="border" type="password">
             </label>
             <button class="p-3 bg-green-400 disable:">Submit</button>

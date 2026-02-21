@@ -48,19 +48,20 @@ async function SubmitForm(args: LoginForm){
 }
 
 </script>
+
 <template>
-    <div class="m-auto bg-[#ACBFA4] m-auto">
-        <h1>Логін</h1>
+    <div class="bg-[#ACBFA4] m-auto my-[10%] w-[30%] p-2">
+        <h1 class="text-center font-bold text-[25px]">Логін</h1>
         <form class="flex flex-col gap-5" @submit.prevent="SubmitForm(form)">
-            <label>
-                Email:
+            <label class="flex flex-col m-auto">
+                <p>Email:</p>
                 <input v-model="form.Email" class="border" type="text">
             </label>
-            <label>
-                Password:
+            <label class="flex flex-col m-auto">
+                <p>Password:</p>
                 <input v-model="form.Password" class="border" type="password">
             </label>
-            <button class="p-3 bg-green-400">Submit</button>
+            <button class="p-3 m-3 bg-green-400">Submit</button>
         </form>
     </div>
 </template>
