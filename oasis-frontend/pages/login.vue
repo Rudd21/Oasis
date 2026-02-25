@@ -43,6 +43,7 @@ async function SubmitForm(args: LoginForm){
         console.log("Виникла помилка входу: ", error.value.data)
         alert(error.value.data.message || 'Помилка авторизації')
     } else{
+        navigateTo('/')
         console.log("Успіх:", data.value?.message)
     }
 }

@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\BookmarkRequests;
 
 Route::get('/user-data', function (Request $request) {
     return $request->user();
@@ -18,3 +20,7 @@ Route::get('/test-data', function(){
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/createProject', [ProjectController::class, 'createProject']);
+
+Route::get('/reqTasks', [BookmarkRequests::class, 'requestTasks']);

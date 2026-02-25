@@ -53,7 +53,5 @@ class AuthController extends Controller
             'message'=>'Вхід Успішний',
             'data'=>Auth::user(),
         ]);
-        
-        
     }
 }
