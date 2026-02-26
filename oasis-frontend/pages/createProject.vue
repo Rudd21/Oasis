@@ -24,13 +24,16 @@ async function createProject(args: ProjectForm) {
 
     await $fetch('http://localhost:8000/sanctum/csrf-cookie', { credentials: 'include' });
 
+    const xsrfToken = useCookie('XSRF-TOKEN').value ?? undefined;
+    
     const response = await $fetch('http://localhost:8000/api/createProject', {
         method: 'POST',
         body: form,
         credentials: 'include',
         headers: {
-            'Accept': 'application/json'
-        }
+            'Accept': 'application/json',
+            'X-XSRF-TOKEN': xsrfToken,
+        } as Record<string, string>
     });
 }
 
