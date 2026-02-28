@@ -24,4 +24,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/createProject', [ProjectController::class, 'createProject']);
 Route::get('/reqProjects', [ProjectController::class, 'reqProjects']);
 
+Route::get('/reqTasks', [ProjectController::class, 'reqProjects']);
+
 Route::get('/reqTasks', [BookmarkRequests::class, 'requestTasks']);

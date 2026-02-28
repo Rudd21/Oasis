@@ -49,12 +49,12 @@ const bookmarkList: Record<string, Bookmark> = {
         to: '/task',
         reqTo: '/reqTasks'
     }, recTasks:{
-        title: 'Recomended task',
+        title: 'Recommended tasks',
         to: '/recTask',
         reqTo: '/recTasks'
     }, curTasks:{
         title: 'Current tasks',
-        to: '/tassk',
+        to: '/curTask',
         reqTo: '/curTasks'
     }, members:{
         title: 'Members',
