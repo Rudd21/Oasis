@@ -10,7 +10,7 @@ class BookmarkRequests extends Controller
 
         $request->validate([
             
-        ])
+        ]);
 
         return response()->json([
             'message' => 'Контролер живий'

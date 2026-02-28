@@ -37,4 +37,20 @@ class ProjectController extends Controller
             'project' => $project
         ], 201);
     }
+
+    public function reqProjects(Request $request){
+        $userId = $request->user()->id;
+
+        $projects = Project::select('id', 'title')
+            ->where('idOwner', $userId)
+            ->orWhere('idManager', $userId)
+            ->orWhereJsonContains('members', $userId)
+            ->get();
+
+        return response()->json([
+            'message' => 'Found projects',
+            'data' => $projects
+        ]);
+    }
+
 }

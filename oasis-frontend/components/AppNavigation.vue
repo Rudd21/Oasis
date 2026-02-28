@@ -35,13 +35,13 @@ const currentNav = computed(()=> navigationMap[activeNav.value])
 
 <template>
     <nav
-        class="group bg-[#E2E8CE] font-[Open Sans] p-3"
+        class="group bg-[#D96868] font-[Open Sans] p-3"
         @mouseleave="activeNav = 'none'"    
     >
         <ul class="flex justify-around items-center">
             <li class="flex items-center gap-5">
                 <img class="w-10 h-10" src="/logo.png" alt="">
-                <h1 class="text-[#FF7F11] font-bold">Oasis</h1>
+                <h1 class="text-[#FBF6F6] font-bold">Oasis</h1>
                 <div>
                     <button 
                         v-for="(content, key) in navigationMap"
